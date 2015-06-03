@@ -32,7 +32,9 @@ class GeoIP{
           
       // Check if an override for the current ip exists
       $overrides = \Config::get('laravel-4-freegeoip::overrides');
-      if(isset($this->ip, $overrides))$this->ip = $overrides[$this->ip];
+      
+      if (isset($this->ip, $overrides) && in_array($this->ip, $overrides))
+          $this->ip = $overrides[$this->ip];
   }
 
   /**
